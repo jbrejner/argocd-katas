@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1 # Just an irrelevant change
 kind: Application
 metadata:
   name: jenkins-student-14
