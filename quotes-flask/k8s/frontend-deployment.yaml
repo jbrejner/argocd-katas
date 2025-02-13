@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: frontend
-  straty: {}
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
