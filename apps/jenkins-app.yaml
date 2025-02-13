@@ -1,19 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-project: default
-destination:
-  namespace: student-14
-  name: in-cluster
-syncPolicy:
-  automated:
-    selfHeal: true
-sources:
-  - repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 12.4.0
-    helm:
-      valueFiles:
-        - $values/jenkins/values.yaml
-    chart: jenkins
-  - repoURL: https://github.com/jbrejner/argocd-katas
-    targetRevision: main
-    ref: values
+metadata:
+  name: jenkins-student-14
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: student-14
+    name: in-cluster
+  project: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      targetRevision: 12.4.0
+      helm:
+        valueFiles:
+          - $values/jenkins/values.yaml
+      chart: jenkins
+    - repoURL: https://github.com/jbrejner/argocd-katas
+      targetRevision: main
+      ref: values
